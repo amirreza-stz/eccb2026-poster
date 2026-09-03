@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b2b">
+  <meta name="description" content="Companion page for the ECCB 2026 poster Tokenization-Aware Protein Language Modeling with Evolution-Guided Units and Dynamic Biological Knowledge Fusion.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tokenization-Aware Protein Language Modeling · ECCB 2026">
+  <meta property="og:description" content="Poster C-P.51: a controlled study of protein tokenization, vocabulary size, fine-tuning, and dynamic biological knowledge fusion.">
+  <title>Tokenization-Aware Protein Language Modeling · ECCB 2026</title>
+  <style>
+    :root {
+      --ink: #0b1f2a;
+      --muted: #526773;
+      --paper: #f7fbfa;
+      --card: rgba(255, 255, 255, .88);
+      --line: #d7e6e3;
+      --navy: #071b2b;
+      --teal: #0c7c76;
+      --mint: #72d5bd;
+      --lime: #d9f078;
+      --orange: #f3a55b;
+      --shadow: 0 18px 50px rgba(7, 27, 43, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(114, 213, 189, .20), transparent 26rem),
+        radial-gradient(circle at 88% 14%, rgba(217, 240, 120, .17), transparent 24rem),
+        var(--paper);
+      font: 16px/1.65 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 16px; top: 16px; z-index: 10; background: white; padding: 10px 14px; border-radius: 10px; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid rgba(215, 230, 227, .75);
+      background: rgba(247, 251, 250, .84);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
+    .brand-mark { width: 34px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 11px; color: white; background: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: .92rem; font-weight: 650; text-decoration: none; }
+    .nav-links a:hover { color: var(--teal); }
+
+    .hero { padding: 88px 0 66px; }
+    .eyebrow { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+    .pill { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; color: #31505a; background: rgba(255,255,255,.7); font-size: .8rem; font-weight: 750; letter-spacing: .02em; }
+    .pill.primary { color: #063f3c; border-color: rgba(12,124,118,.25); background: rgba(114,213,189,.22); }
+    h1 { max-width: 980px; margin: 0; font-size: clamp(2.55rem, 6vw, 5.55rem); line-height: .98; letter-spacing: -.065em; text-wrap: balance; }
+    .hero-lead { max-width: 830px; margin: 28px 0 0; color: var(--muted); font-size: clamp(1.08rem, 2vw, 1.32rem); line-height: 1.55; }
+    .authors { margin: 28px 0 0; font-weight: 760; }
+    .affiliation { margin: 4px 0 0; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 17px; border: 1px solid var(--line); border-radius: 13px; color: var(--ink); background: white; box-shadow: 0 5px 18px rgba(7,27,43,.06); font-weight: 760; text-decoration: none; transition: transform .16s ease, box-shadow .16s ease; }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 9px 25px rgba(7,27,43,.12); }
+    .button.primary { color: white; border-color: var(--navy); background: var(--navy); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 54px; }
+    .stat { min-height: 132px; padding: 23px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: 0 8px 28px rgba(7,27,43,.05); }
+    .stat strong { display: block; color: var(--teal); font-size: 2rem; line-height: 1.1; letter-spacing: -.04em; }
+    .stat span { display: block; margin-top: 9px; color: var(--muted); font-size: .92rem; line-height: 1.35; }
+
+    section { padding: 78px 0; }
+    .section-kicker { margin: 0 0 9px; color: var(--teal); font-size: .78rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { max-width: 830px; margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.06; letter-spacing: -.045em; text-wrap: balance; }
+    .section-intro { max-width: 790px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; }
+
+    .question-card { position: relative; overflow: hidden; padding: clamp(28px, 5vw, 58px); border-radius: var(--radius); color: white; background: var(--navy); box-shadow: var(--shadow); }
+    .question-card::after { content: ""; position: absolute; right: -8rem; bottom: -12rem; width: 30rem; height: 30rem; border: 1px solid rgba(114,213,189,.24); border-radius: 50%; box-shadow: 0 0 0 48px rgba(114,213,189,.06), 0 0 0 96px rgba(114,213,189,.04); }
+    .question-card h2 { position: relative; z-index: 1; max-width: 900px; }
+    .question-card p { position: relative; z-index: 1; max-width: 800px; color: #c8d8dc; }
+    .question-card em { color: var(--lime); font-style: normal; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 34px; }
+    .card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: 0 10px 34px rgba(7,27,43,.055); }
+    .card-number { display: inline-grid; place-items: center; width: 34px; aspect-ratio: 1; border-radius: 11px; color: #064c48; background: rgba(114,213,189,.28); font-weight: 850; }
+    .card h3 { margin: 16px 0 8px; font-size: 1.27rem; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .compare { margin-top: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; box-shadow: 0 10px 34px rgba(7,27,43,.055); }
+    .compare-row { display: grid; grid-template-columns: 190px 1fr; }
+    .compare-row + .compare-row { border-top: 1px solid var(--line); }
+    .compare-row dt, .compare-row dd { margin: 0; padding: 20px 24px; }
+    .compare-row dt { font-weight: 820; background: #eff7f5; }
+    .compare-row dd { color: var(--muted); }
+
+    .finding-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; margin-top: 36px; }
+    .finding { padding: 30px; border-radius: var(--radius); }
+    .finding.main { grid-row: span 2; color: white; background: linear-gradient(145deg, #0b7973, #07524f); box-shadow: var(--shadow); }
+    .finding.main p { color: #d6f1eb; }
+    .finding.secondary { border: 1px solid var(--line); background: white; }
+    .finding h3 { margin: 0 0 10px; font-size: 1.35rem; letter-spacing: -.025em; }
+    .finding p { margin: 0; color: var(--muted); }
+    .finding .tag { display: inline-block; margin-bottom: 36px; padding: 6px 10px; border-radius: 999px; color: var(--navy); background: var(--lime); font-size: .76rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+
+    .resource-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 34px; }
+    .resource { display: flex; align-items: center; gap: 18px; min-height: 112px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: white; text-decoration: none; transition: border-color .16s ease, transform .16s ease, box-shadow .16s ease; }
+    .resource:hover { transform: translateY(-2px); border-color: rgba(12,124,118,.42); box-shadow: 0 12px 28px rgba(7,27,43,.08); }
+    .resource-icon { flex: 0 0 46px; width: 46px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 14px; color: white; background: var(--navy); font-weight: 900; }
+    .resource strong { display: block; }
+    .resource span { display: block; margin-top: 2px; color: var(--muted); font-size: .9rem; }
+    .resource-arrow { margin-left: auto; color: var(--teal); font-size: 1.25rem; }
+
+    .citation { margin-top: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: #edf6f4; }
+    .citation code { display: block; overflow-wrap: anywhere; color: #27434b; font: .9rem/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .contact { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: clamp(30px, 5vw, 54px); border-radius: var(--radius); background: #e6f4ef; }
+    .contact p { max-width: 650px; margin: 10px 0 0; color: var(--muted); }
+    .contact .button { flex: 0 0 auto; }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; padding-top: 26px; border-top: 1px solid var(--line); }
+
+    @media (max-width: 850px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .finding-grid { grid-template-columns: 1fr; }
+      .finding.main { grid-row: auto; }
+      .resource-grid { grid-template-columns: 1fr; }
+      .contact { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 26px, 1120px); }
+      .nav-links a:not(.keep) { display: none; }
+      .hero { padding-top: 60px; }
+      .grid, .stats { grid-template-columns: 1fr; }
+      .stat { min-height: 0; }
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-row dd { padding-top: 0; }
+      section { padding: 56px 0; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4.2rem); }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav aria-label="Primary navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">P</span><span>ECCB 2026 · C-P.51</span></a>
+      <div class="nav-links">
+        <a href="#study">Study</a>
+        <a href="#findings">Findings</a>
+        <a href="#resources">Resources</a>
+        <a class="keep" href="mailto:amirreza.stz@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">
+          <span class="pill primary">ECCB 2026</span>
+          <span class="pill">Poster C-P.51</span>
+          <span class="pill">Geneva · 31 Aug–4 Sep 2026</span>
+        </div>
+        <h1>Tokenization-Aware Protein Language Modeling</h1>
+        <p class="hero-lead">A controlled study of evolution-guided protein units, vocabulary size, fine-tuning strategy, and dynamic biological knowledge fusion.</p>
+        <p class="authors">Amirreza Sattarzadeh · Burak Suyunu · Özdeniz Dolu · Arzucan Özgür</p>
+        <p class="affiliation">LifeLU · TABILAB · Department of Computer Engineering, Boğaziçi University</p>
+        <div class="actions">
+          <a class="button primary" href="#study">Explore the study <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://arxiv.org/abs/2503.08838" target="_blank" rel="noreferrer">Read the PUMA paper <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="stats" aria-label="Study at a glance">
+          <div class="stat"><strong>4</strong><span>tokenizer families: PUMA variants, BPE, and amino acids</span></div>
+          <div class="stat"><strong>7</strong><span>vocabulary scales tested under matched model settings</span></div>
+          <div class="stat"><strong>14</strong><span>protein downstream tasks from the PETA benchmark</span></div>
+          <div class="stat"><strong>7,000+</strong><span>training runs across the controlled experimental sweep</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap">
+        <div class="question-card">
+          <p class="section-kicker" style="color:#72d5bd">The central question</p>
+          <h2>When do biologically informed units <em>earn their added complexity</em>?</h2>
+          <p>Protein language models are usually fed single amino acids or statistically learned subwords. We test whether evolution-guided units and sequence-derived dynamic knowledge improve downstream performance—and whether any gain survives careful controls for vocabulary size, training strategy, data, and compute.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="study">
+      <div class="wrap">
+        <p class="section-kicker">Study design</p>
+        <h2>Separate the effect of the tokenizer from the choices around it.</h2>
+        <p class="section-intro">All tokenizer families are evaluated within a consistent ESM-2 35M framework pretrained on UniRef50, then transferred across the PETA task suite under multiple fine-tuning regimes.</p>
+
+        <dl class="compare">
+          <div class="compare-row"><dt>Amino acids</dt><dd>The standard residue-level baseline: compact, universal, and maximally granular.</dd></div>
+          <div class="compare-row"><dt>BPE</dt><dd>Frequency-driven subword units learned from the sequence corpus.</dd></div>
+          <div class="compare-row"><dt>PUMA families</dt><dd>Protein units discovered through mutation-aware merging guided by amino-acid substitution matrices.</dd></div>
+          <div class="compare-row"><dt>Dynamics fusion</dt><dd>A parallel arm that injects pooled sequence-derived dynamics features and measures their marginal value.</dd></div>
+        </dl>
+
+        <div class="grid">
+          <article class="card"><span class="card-number">1</span><h3>Matched architecture</h3><p>Keep model capacity and pretraining setup comparable so tokenizer differences are interpretable.</p></article>
+          <article class="card"><span class="card-number">2</span><h3>Vocabulary sweep</h3><p>Test the same families across seven scales instead of comparing each method at a single convenient size.</p></article>
+          <article class="card"><span class="card-number">3</span><h3>Transfer strategies</h3><p>Compare multiple fine-tuning regimes to expose interactions between tokenization, trainable capacity, and task type.</p></article>
+          <article class="card"><span class="card-number">4</span><h3>Task diversity</h3><p>Evaluate per-protein and per-residue classification and regression rather than relying on one benchmark endpoint.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="findings">
+      <div class="wrap">
+        <p class="section-kicker">What the sweep shows</p>
+        <h2>There is no context-free “best” protein tokenizer.</h2>
+        <p class="section-intro">The practical choice depends on task granularity, data, vocabulary size, fine-tuning strategy, and available compute.</p>
+
+        <div class="finding-grid">
+          <article class="finding main">
+            <span class="tag">Main takeaway</span>
+            <h3>Choose the full configuration, not the tokenizer name.</h3>
+            <p>Biological priors can be useful, but they do not dominate every task. A fair decision compares accuracy and robustness together with sequence length, vocabulary cost, trainable parameters, and inference budget.</p>
+          </article>
+          <article class="finding secondary">
+            <h3>Vocabulary size is a first-class variable.</h3>
+            <p>Performance often changes non-monotonically with vocabulary scale; larger is not automatically better, and very large vocabularies can sharply reduce effective model capacity.</p>
+          </article>
+          <article class="finding secondary">
+            <h3>Task and pooling choices interact.</h3>
+            <p>Per-protein and per-residue tasks respond differently. Attention-based pooling is frequently stronger than simple mean pooling, but the gain remains configuration-dependent.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="wrap">
+        <p class="section-kicker">Resources & contact</p>
+        <h2>Continue from the poster.</h2>
+        <p class="section-intro">Read the method behind the evolution-guided units, learn about the ERC-funded LifeLU project, or get in touch to discuss the results and ongoing work.</p>
+
+        <div class="resource-grid">
+          <a class="resource" href="https://arxiv.org/abs/2503.08838" target="_blank" rel="noreferrer"><span class="resource-icon">P</span><span><strong>PUMA on arXiv</strong><span>Discovery of Protein Units via Mutation-Aware Merging</span></span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+          <a class="resource" href="https://tabilab.cmpe.bogazici.edu.tr/projects/lifelu/" target="_blank" rel="noreferrer"><span class="resource-icon">L</span><span><strong>LifeLU project</strong><span>Understanding the Language of Life at TABILAB</span></span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+          <a class="resource" href="https://www.linkedin.com/in/amirreza-sattarzadeh" target="_blank" rel="noreferrer"><span class="resource-icon">in</span><span><strong>Connect on LinkedIn</strong><span>Amirreza Sattarzadeh</span></span><span class="resource-arrow" aria-hidden="true">↗</span></a>
+          <a class="resource" href="mailto:amirreza.stz@gmail.com?subject=ECCB%202026%20poster%20C-P.51"><span class="resource-icon">@</span><span><strong>Email Amirreza</strong><span>amirreza.stz@gmail.com</span></span><span class="resource-arrow" aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="citation">
+          <code>Suyunu, B., Dolu, Ö., Olaosebikan, I. A., Karatas Bristow, H., &amp; Özgür, A. (2025). PUMA: Discovery of Protein Units via Mutation-Aware Merging. arXiv:2503.08838.</code>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="contact">
+          <div><p class="section-kicker">Let’s discuss</p><h2 style="font-size:clamp(1.8rem,3vw,2.7rem)">Questions, ideas, or a collaboration?</h2><p>I would be glad to compare notes on protein tokenization, efficient PLM training, downstream evaluation, or biological knowledge fusion.</p></div>
+          <a class="button primary" href="mailto:amirreza.stz@gmail.com?subject=ECCB%202026%20poster%20C-P.51">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>ECCB 2026 poster companion · C-P.51</span>
+      <span>LifeLU · TABILAB · Boğaziçi University</span>
+    </div>
+  </footer>
+</body>
+</html>
